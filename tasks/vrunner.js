@@ -23,11 +23,11 @@ module.exports = function(grunt) {
       done();
     };
     var options = this.options();
-    (new vrunner(options)).run(function(err,report){
+    (new vrunner(options)).run(function(err,report,remarks){
       if(err) over(err);
       else {
-        grunt.log.ok('ALL TEST CASES SUCCESSFULLY COMPLETED.');
-        console.log(report);
+        grunt.log.ok('EXECUTION OF ALL TEST CASES SUCCESSFULLY COMPLETED.');
+        console.log(remarks,report);
         done();
       }
     });
