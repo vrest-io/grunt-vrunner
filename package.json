@@ -27,6 +27,7 @@
     "test": "grunt test"
   },
   "dependencies": {
+    "chalk" : "1.0.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.9.2",
