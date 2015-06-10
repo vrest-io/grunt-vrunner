@@ -38,7 +38,7 @@ module.exports = function(grunt) {
       } else if(pass === false){
         grunt.log.writeln(tc.method+' --> '+tc.url+' --> '+chalk.red.bold('FAILED'));
       } else {
-        grunt.log.writeln(tc.method+' --> '+tc.url+' --> '+chalk.yellow('NOT_EXECUTED'));
+        grunt.log.writeln(tc.method+' --> '+tc.url+' --> '+chalk.cyan('NOT_EXECUTED'));
       }
     });
     Runner.on('error',function(err){
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       over(err);
     });
     Runner.on('warning',function(warning){
-      console.log(chalk.cyan('WARNING'));
+      console.log(chalk.yellow('WARNING'));
       over(warning,true);
     });
   });
