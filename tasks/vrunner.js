@@ -11,7 +11,7 @@
 var vrunner = require('vrunner'), chalk = require('chalk');
 
 module.exports = function(grunt) {
-  
+
   //add right side padding
   var rpad = function(str, totalSize, padChar){
     if(!padChar) padChar = ' ';
@@ -42,6 +42,7 @@ module.exports = function(grunt) {
         console.log(error);
       });
       if(!dontExit) done();
+      grunt.fail.warn(err);
     };
     var options = this.options();
     var Runner = (new vrunner(options));
@@ -50,10 +51,11 @@ module.exports = function(grunt) {
       else {
         //grunt.log.ok('EXECUTION OF ALL TEST CASES SUCCESSFULLY COMPLETED.');
         console.log(remarks,report);
-        done();
+        if(report.failed) over('vRunner test case execution were failed.');
+        else done();
       }
     });
-    
+
     var index = 1;
     Runner.on('testcase',function(pass,tc,trtc){
       //console.log(trtc.);
@@ -67,7 +69,7 @@ module.exports = function(grunt) {
         grunt.log.writeln(prefix + chalk.cyan.bold('[Not Executed] ' + (tc.summary || tc.url)) + ' (' + trtc.executionTime + 'ms) ');
       }
     });
-    
+
     Runner.on('error',function(err){
       grunt.log.error();
       over(err);
