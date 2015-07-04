@@ -26,64 +26,29 @@ In your project's Gruntfile, add a section named `vrunner` to the data object pa
 grunt.initConfig({
   vrunner: {
     options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+      credentials : {
+        email : "<vREST LOGIN EMAIL ID>",
+        password : <vREST LOGIN PASSWORD>
+      },
+      url: "<vREST TESTCASE LIST URL>"
+    }
   },
 });
 ```
 
 ### Options
 
-#### options.separator
+#### options.credentials.email
 Type: `String`
-Default value: `',  '`
 
-A string value that is used to do something with whatever.
+Email ID through which you have registered on vREST
 
-#### options.punctuation
+#### options.credentials.password
 Type: `String`
-Default value: `'.'`
 
-A string value that is used to do something else with whatever else.
+Password for your vREST account
 
-### Usage Examples
+#### options.url
+Type: `String`
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  vrunner: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  vrunner: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-_(Nothing yet)_
+Provide the test case list URL here. You can find the test case list URL by going to your vREST instance and select Test Cases tab. Now select "More" menu and choose "Copy Test Case List URL to Clipboard for CI" menu item. URL will be copied to your clipboard, paste the URL in this option.
