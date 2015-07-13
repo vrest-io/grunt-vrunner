@@ -28,7 +28,7 @@ grunt.initConfig({
     options: {
       credentials : {
         email : "<vREST LOGIN EMAIL ID>",
-        password : <vREST LOGIN PASSWORD>
+        password : "<vREST LOGIN PASSWORD>"
       },
       url: "<vREST TESTCASE LIST URL>"
     }
@@ -51,4 +51,4 @@ Password for your vREST account
 #### options.url
 Type: `String`
 
-Provide the test case list URL here. You can find the test case list URL by going to your vREST instance and select Test Cases tab. Now select "More" menu and choose "Copy Test Case List URL to Clipboard for CI" menu item. URL will be copied to your clipboard, paste the URL in this option.
+Provide the test case list URL here. You can copy the test case list URL by going to your vREST instance and select Test Cases tab. Now click on "Copy Current Test Case List URL" button in the left hand side and copy the selected URL and paste the URL in this option.
