@@ -3,7 +3,7 @@
  * http://vrest.io
  *
  * Copyright (c) 2015 vREST Team
- * Licensed under the MIT license.
+ * Check license file for full license details
  */
 
 'use strict';
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         console.log(error);
       });
       if(!dontExit) done();
-      grunt.fail.warn(err);
+      grunt.fail.warn(new Error(err));
     };
     var options = this.options();
     var Runner = (new vrunner(options));
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
       else {
         //grunt.log.ok('EXECUTION OF ALL TEST CASES SUCCESSFULLY COMPLETED.');
         console.log(remarks,report);
-        if(report.failed) over('vRunner test case execution were failed.');
+        if(report.failed) over('Some of the test cases have failed.');
         else done();
       }
     });
