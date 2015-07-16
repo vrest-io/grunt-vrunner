@@ -8,12 +8,14 @@
 
 'use strict';
 
-var vrunner = require('vrunner'), chalk = require('chalk');
+var vrunner = require('vrunner'), 
+    chalk = require('chalk');
 
 module.exports = function(grunt) {
 
-  //add right side padding
+  //adds right side padding
   var rpad = function(str, totalSize, padChar){
+
     if(!padChar) padChar = ' ';
     if(str.length >= totalSize) return str;
     else {
@@ -25,6 +27,7 @@ module.exports = function(grunt) {
   };
 
   var getMethodName = function(method){
+
     if(method === "GET") return chalk.blue.bold(method) + '    ';
     else if(method === "POST") return chalk.bold(method) + '   ';
     else if(method === "PUT") return chalk.green.bold(method) + '    ';
@@ -34,8 +37,9 @@ module.exports = function(grunt) {
   };
 
   grunt.registerTask('vrunner', 'Runs vREST test cases.', function() {
+
     var done = this.async();
-    var over = function(err,dontExit){
+    var over = function(err, dontExit){
       if(!err) err = 'An unknown glitch found.';
       if(!Array.isArray(err)) err = [err];
       err.forEach(function(error){
@@ -44,23 +48,30 @@ module.exports = function(grunt) {
       if(!dontExit) done();
       grunt.fail.warn(new Error(err));
     };
-    var options = this.options();
+    
+    var options = this.options(),
+        index = 1, totalTime = 0, startTime = (new Date()).getTime();
+
     var Runner = (new vrunner(options));
-    Runner.run(function(err,report,remarks){
+
+    Runner.run(function(err, report, remarks){
+
       if(err) over(err);
       else {
-        //grunt.log.ok('EXECUTION OF ALL TEST CASES SUCCESSFULLY COMPLETED.');
-        console.log(remarks,report);
+        console.log(remarks, report);
+        //console.log("Total Execution Time: " + totalTime);
+        console.log("Total Time: " + ((new Date()).getTime() - startTime) + 'ms');
         if(report.failed) over('Some of the test cases have failed.');
         else done();
       }
     });
 
-    var index = 1;
-    Runner.on('testcase',function(pass,tc,trtc){
-      //console.log(trtc.);
+    
+    Runner.on('testcase', function(pass, tc, trtc){
+
       var prefix = rpad(index + '.', 5) + getMethodName(tc.method);
       index++;
+      totalTime += trtc.executionTime;
       if(pass){
         grunt.log.writeln(prefix + chalk.green.bold(tc.summary || tc.url) + ' (' + trtc.executionTime + 'ms) ');
       } else if(pass === false){
@@ -70,12 +81,14 @@ module.exports = function(grunt) {
       }
     });
 
-    Runner.on('error',function(err){
+    Runner.on('error', function(err){
+
       grunt.log.error();
       over(err);
     });
 
     Runner.on('log', function(message, level){
+
       if(!level) level = 'info';
       message = '>> ' + message;
       if(level === 'error') message = chalk.red.bold(message);
@@ -83,9 +96,9 @@ module.exports = function(grunt) {
       console.log(message);
     });
 
-    Runner.on('warning',function(warning){
+    Runner.on('warning', function(warning){
       //console.log(chalk.yellow('WARNING'));
-      //over(warning,true);
+      //over(warning, true);
     });
   });
 };
