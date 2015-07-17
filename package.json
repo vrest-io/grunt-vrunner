@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://rameshoptimizory@bitbucket.org/rameshoptimizory/grunt-vrunner.git"
+    "url": "git@github.com:vrest-io/grunt-vrunner.git"
   },
   "bugs": {
-    "url": "https://rameshoptimizory@bitbucket.org/rameshoptimizory/grunt-vrunner"
+    "url": "https://github.com/vrest-io/grunt-vrunner/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://vrest.io/blob/master/LICENSE-MIT"
+      "url": "https://github.com/vrest-io/grunt-vrunner/blob/master/LICENSE-MIT"
     }
   ],
   "engines": {
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "chalk" : "1.0.0",
-    "vrunner": "0.0.1"
+    "vrunner": "0.0.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.9.2",
