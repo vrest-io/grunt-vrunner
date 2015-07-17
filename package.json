@@ -1,7 +1,7 @@
 {
   "name": "grunt-vrunner",
   "description": "Runs vREST test cases.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "http://vrest.io",
   "author": {
     "name": "vREST Team",
@@ -27,7 +27,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "chalk" : "1.0.0",
+    "chalk": "1.0.0",
     "vrunner": "0.0.2"
   },
   "devDependencies": {
