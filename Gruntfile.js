@@ -31,11 +31,12 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     vrunner: {
       options: {
+        logger : 'console',
         credentials : {
           email : 'ramesh.kumar@optimizory.com',
           password : 'ra'
         },
-        url: 'i/one/g/testcase?projectId=555ae1d01b607a00004465a5&currentPage=0&pageSize=20'
+        url: '/i/one/g/testcase?projectId=55a37416a734500e6f96337c'
       }
     },
 
