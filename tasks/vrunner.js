@@ -13,12 +13,10 @@ var vrunner = require('vrunner');
 module.exports = function(grunt) {
 
   grunt.registerTask('vrunner', 'Runs vREST test cases.', function() {
-    var done = this.async(), Runner = new vrunner(this.options());
+    var opts = this.options(), done = this.async();
+    opts.exitOnDone = false;
+    var Runner = new vrunner(opts);
 
-    Runner.on('over',function(err){
-      if(typeof err !== 'string') err = JSON.stringify(err);
-      grunt.fail.warn(new Error(err));
-    });
     Runner.on('done',done);
 
     Runner.run();
