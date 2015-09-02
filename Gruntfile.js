@@ -31,7 +31,7 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     vrunner: {
       options: {
-        logger : 'json',
+        logger : 'console',
         filePath : require('path').join(__dirname, 'dump', 'log.json'),
         credentials : {
           email : 'ramesh.kumar@optimizory.com',
